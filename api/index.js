@@ -5,7 +5,7 @@ import helmet from "helmet";
 import "dotenv/config";
 import connectDB from "../config/mongodb.js";
 import userRouter from "../routes/userRoute.js";
-
+import serverless from 'serverless-http';
 const app = express();
 const port = process.env.PORT || 5000;
 const isDevelopment = process.env.NODE_ENV !== 'production';
@@ -197,4 +197,4 @@ if (!isVercel) {
 }
 
 // Export for Vercel serverless function
-export default app;
+export default serverless(app);
